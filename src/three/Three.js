@@ -31,15 +31,17 @@ export default class Three extends Component {
   renderCube() {
     const geometry = new BoxGeometry(1,1,1);
     const material = new MeshBasicMaterial( { color: 0x00ff00 } );
-    const cube = new Mesh( geometry, material );
+    this.cube = new Mesh( geometry, material );
 
 
-    this.scene.add(cube);
+    this.scene.add(this.cube);
     this.camera.position.z = 5;
     console.log(this.scene, this.camera);
   }
   animate() {
     requestAnimationFrame( this.animate );
+    this.cube.rotation.x += 0.025;
+    this.cube.rotation.y += 0.025;
     this.renderer.render( this.scene, this.camera );
   }
   render() {
